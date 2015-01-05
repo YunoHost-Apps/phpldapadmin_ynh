@@ -1,0 +1,46 @@
+{
+    "name": "phpLDAPadmin",
+    "id": "phpldapadmin",
+    "description": {
+        "en": "Manage OpenLDAP database over the web",
+        "fr": "Application web de gestion de la base OpenLDAP"
+    },
+    "url": "http://phpldapadmin.sourceforge.net",
+    "maintainer": {
+        "name": "aymhce",
+        "email": "aymhce@gmail.com"
+    },
+    "multi_instance": "false",
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Choose a domain for phpLDAPadmin",
+                    "fr": "Choisissez un domaine pour phpLDAPadmin"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path for phpLDAPadmin",
+                    "fr": "Choisissez un chemin pour phpLDAPadmin"
+                },
+                "example": "/phpldapadmin",
+                "default": "/phpldapadmin"
+            },
+            {
+                "name": "admin",
+                "type": "user",
+                "ask": {
+                    "en": "Choose the only allowed admin user",
+                    "fr": "Choisissez l'unique utilisateur autorisé"
+                },
+                "example": "johndoe"
+            }
+        ]
+    }
+}

@@ -6,6 +6,3 @@ sudo rm -rf /var/www/phpldapadmin
 sudo rm -f /etc/nginx/conf.d/$domain.d/phpldapadmin.conf
 
 sudo service nginx reload
-
-#db_user=phpldapadmin
-#db_name=phpldapadmin

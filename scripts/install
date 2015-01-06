@@ -26,7 +26,7 @@ sudo mkdir -p $final_path
 echo "Downloading phpLDAPadmin $version..."
 sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php5/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
 echo "Extracting to $final_path..."
-sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
+sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..
 sudo cp  -r ../phpLDAPadmin-$version-all-languages/* $final_path
 
 # Create db

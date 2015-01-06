@@ -26,8 +26,8 @@ sudo mkdir -p $final_path
 echo "Downloading phpLDAPadmin $version..."
 sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php5/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
 echo "Extracting to $final_path..."
-sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..
-sudo cp  -r ../phpLDAPadmin-$version-all-languages/* $final_path
+sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
+sudo cp  -r ../phpldapadmin-$version/* $final_path
 
 # Create db
 #echo "Setting up database..."
@@ -46,7 +46,7 @@ echo "Configuring application..."
 #sed -i "s@YNH_PMA_USER@$db_user@g" ../conf/config.php
 #sed -i "s@YNH_PMA_PASSWORD@$db_pwd@g" ../conf/config.php
 #sed -i "s@YNH_MYSQL_ROOT_PASSWORD@$(sudo cat /etc/yunohost/mysql)@g" ../conf/config.php
-sudo cp ../conf/config.php $final_path/conf/
+sudo cp ../conf/config.php $final_path/config/
 
 sudo yunohost app addaccess phpldapadmin -u $admin
 sudo yunohost app setting phpldapadmin admin -v $admin
@@ -57,8 +57,8 @@ sudo chown -R root: $final_path
 sudo find $final_path -type f | xargs sudo chmod 644
 sudo find $final_path -type d | xargs sudo chmod 755
 # config.php contains sensitive data, restrict its access
-sudo chown root:www-data $final_path/config.php
-sudo chmod 640 $final_path/config.php
+sudo chown root:www-data $final_path/config/config.php
+sudo chmod 640 $final_path/config/config.php
 
 # Modify Nginx configuration file and copy it to Nginx conf directory
 echo "Setting up nginx configuration..."

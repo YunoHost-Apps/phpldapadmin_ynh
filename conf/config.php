@@ -284,6 +284,7 @@ $servers->newServer('ldap_pla');
 /* A convenient name that will appear in the tree viewer and throughout
    phpLDAPadmin to identify this LDAP server to users. */
 $servers->setValue('server','name','Yunohost OpenLDAP Server');
+$servers->setValue('login','bind_id','cn=admin,dc=yunohost,dc=org');
 
 /* Examples:
    'ldap.example.com',

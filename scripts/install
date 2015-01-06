@@ -42,11 +42,11 @@ sudo cp  -r ../phpLDAPadmin-$version-all-languages/* $final_path
 
 # Configuration
 echo "Configuring application..."
-sed -i "s@YNH_DOMAIN@$domain@g" ../conf/config.inc.php
-sed -i "s@YNH_PMA_USER@$db_user@g" ../conf/config.inc.php
-sed -i "s@YNH_PMA_PASSWORD@$db_pwd@g" ../conf/config.inc.php
-sed -i "s@YNH_MYSQL_ROOT_PASSWORD@$(sudo cat /etc/yunohost/mysql)@g" ../conf/config.inc.php
-sudo cp ../conf/config.inc.php $final_path
+#sed -i "s@YNH_DOMAIN@$domain@g" ../conf/config.php
+#sed -i "s@YNH_PMA_USER@$db_user@g" ../conf/config.php
+#sed -i "s@YNH_PMA_PASSWORD@$db_pwd@g" ../conf/config.php
+#sed -i "s@YNH_MYSQL_ROOT_PASSWORD@$(sudo cat /etc/yunohost/mysql)@g" ../conf/config.php
+sudo cp ../conf/config.php $final_path/conf/
 
 sudo yunohost app addaccess phpldapadmin -u $admin
 sudo yunohost app setting phpldapadmin admin -v $admin
@@ -56,9 +56,9 @@ echo "Setting permission..."
 sudo chown -R root: $final_path
 sudo find $final_path -type f | xargs sudo chmod 644
 sudo find $final_path -type d | xargs sudo chmod 755
-# config.inc.php contains sensitive data, restrict its access
-sudo chown root:www-data $final_path/config.inc.php
-sudo chmod 640 $final_path/config.inc.php
+# config.php contains sensitive data, restrict its access
+sudo chown root:www-data $final_path/config.php
+sudo chmod 640 $final_path/config.php
 
 # Modify Nginx configuration file and copy it to Nginx conf directory
 echo "Setting up nginx configuration..."

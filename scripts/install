@@ -5,6 +5,8 @@ domain=$1
 path=$2
 admin=$3
 
+versionname=$(lsb_release -a | grep Codename | awk -F' ' '{print  $2}')
+
 # Check domain/path availability
 sudo yunohost app checkurl $domain$path -a phpldapadmin
 if [[ ! $? -eq 0 ]]; then
@@ -28,6 +30,10 @@ sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin
 echo "Extracting to $final_path..."
 sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
 sudo cp  -r ../phpldapadmin-$version/* $final_path
+
+# Patch 1.2.3 for Jessie (correct bug php 5.5)
+[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo wget http://www.jouvinio.net/wiki/images/f/f0/PhpLdapAdmin-1.2.3_patch.tar.gz
+[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo tar -C $final_path/lib/ -xzvf phpLdapAdmin-1.2.3_patch.tar.gz
 
 # Configuration
 echo "Configuring application..."

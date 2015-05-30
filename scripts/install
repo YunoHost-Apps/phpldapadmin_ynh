@@ -33,7 +33,7 @@ sudo cp  -r ../phpldapadmin-$version/* $final_path
 
 # Patch 1.2.3 for Jessie (correct bug php 5.5)
 [ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo wget http://www.jouvinio.net/wiki/images/f/f0/PhpLdapAdmin-1.2.3_patch.tar.gz
-[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo tar -C $final_path/lib/ -xzvf phpLdapAdmin-1.2.3_patch.tar.gz
+[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo tar -C $final_path/lib/ -xzvf PhpLdapAdmin-1.2.3_patch.tar.gz
 
 # Configuration
 echo "Configuring application..."

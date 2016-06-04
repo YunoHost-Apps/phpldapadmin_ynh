@@ -1,14 +1,19 @@
 {
     "name": "phpLDAPadmin",
     "id": "phpldapadmin",
+    "url": "http://phpldapadmin.sourceforge.net",
+    "packaging_format": 1,
     "description": {
         "en": "Manage OpenLDAP database over the web",
         "fr": "Application web de gestion de la base OpenLDAP"
     },
-    "url": "http://phpldapadmin.sourceforge.net",
+    "licence": "free",
     "maintainer": {
         "name": "aymhce",
         "email": "aymhce@gmail.com"
+    },
+    "requirements": {
+        "yunohost": ">> 2.3.12.1"
     },
     "multi_instance": "false",
     "arguments": {

@@ -1,46 +1,41 @@
 #!/bin/bash
 
 # Retrieve arguments
-domain=$1
-path=$2
-admin=$3
+app=$YNH_APP_INSTANCE_NAME
+domain=$YNH_APP_ARG_DOMAIN
+path=$YNH_APP_ARG_PATH
+admin=$YNH_APP_ARG_ADMIN
 
-versionname=$(lsb_release -a | grep Codename | awk -F' ' '{print  $2}')
+# Source YunoHost helpers
+. /usr/share/yunohost/helpers
+
+# Save app settings
+ynh_app_setting_set "$app" admin "$admin"
 
 # Check domain/path availability
-sudo yunohost app checkurl $domain$path -a phpldapadmin
-if [[ ! $? -eq 0 ]]; then
-    exit 1
-fi
-
-# Check that admin user is an existing account
-sudo yunohost user list --json | grep -q "\"username\": \"$admin\""
-if [[ ! $? -eq 0 ]]; then
-    echo "Error : the chosen admin user does not exist"
-    exit 1
-fi
+sudo yunohost app checkurl "${domain}${path}" -a "$app" || ynh_die "Path not available: ${domain}${path}"
 
 # Copy files to the right place
 version=$(cat upstream_version)
-final_path=/var/www/phpldapadmin
+final_path=/var/www/$app
 sudo rm -rf $final_path
 sudo mkdir -p $final_path
 echo "Downloading phpLDAPadmin $version..."
 sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php5/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
 echo "Extracting to $final_path..."
 sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
-sudo cp  -r ../phpldapadmin-$version/* $final_path
+sudo cp  -ar ../phpldapadmin-$version/. $final_path
 
 # Patch 1.2.3 for Jessie (correct bug php 5.5)
-[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo wget http://www.jouvinio.net/wiki/images/f/f0/PhpLdapAdmin-1.2.3_patch.tar.gz
-[ "$versionname" == "jessie" ] && [ "$version" == "1.2.3" ] && sudo tar -C $final_path/lib/ -xzvf PhpLdapAdmin-1.2.3_patch.tar.gz
+sudo wget -O PhpLdapAdmin-1.2.3_patch.tar.gz http://www.jouvinio.net/wiki/images/f/f0/PhpLdapAdmin-1.2.3_patch.tar.gz > /dev/null 2>&1
+sudo tar -C $final_path/lib/ -xzvf PhpLdapAdmin-1.2.3_patch.tar.gz
 
 # Configuration
 echo "Configuring application..."
 sudo cp ../conf/config.php $final_path/config/
 
-sudo yunohost app addaccess phpldapadmin -u $admin
-sudo yunohost app setting phpldapadmin admin -v $admin
+sudo yunohost app addaccess $app -u $admin
+sudo yunohost app setting $app admin -v $admin
 
 # Files owned by root, www-data can just read
 echo "Setting permission..."
@@ -61,4 +56,4 @@ sudo chown root: $nginxconf
 sudo chmod 600 $nginxconf
 
 sudo service nginx reload
-sudo yunohost app ssowatconf
+#sudo yunohost app ssowatconf

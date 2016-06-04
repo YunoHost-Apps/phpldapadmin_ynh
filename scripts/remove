@@ -1,7 +1,15 @@
 #!/bin/bash
 
-domain=$(sudo yunohost app setting phpldapadmin domain)
+# See comments in install script
+app=$YNH_APP_INSTANCE_NAME
 
+# Source YunoHost helpers
+. /usr/share/yunohost/helpers
+
+# Retrieve app settings
+domain=$(ynh_app_setting_get "$app" domain)
+
+# Remove conf and app
 sudo rm -rf /var/www/phpldapadmin
 sudo rm -f /etc/nginx/conf.d/$domain.d/phpldapadmin.conf
 

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -eu
+
+. /usr/share/yunohost/helpers
+
+app=$YNH_APP_INSTANCE_NAME
+
+domain=$(ynh_app_setting_get "$app" domain)
+path=$(ynh_app_setting_get "$app" path)
+admin=$(ynh_app_setting_get "$app" admin)
+
+yunohost app checkurl "${domain}${path}" -a "$app" \
+        || ynh_die "Path not available: ${domain}${path}"
+test ! -d /var/www/$app \
+        || ynh_die "There is already a directory: /var/www/$app "
+
+sudo cp -a ./sources "/var/www/$app"
+
+cp -a ./conf/nginx.conf "/etc/nginx/conf.d/$domain.d/$app.conf"
+
+sudo service nginx reload

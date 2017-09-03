@@ -15,7 +15,9 @@ admin=$YNH_APP_ARG_ADMIN
 ynh_app_setting_set "$app" admin "$admin"
 
 # Check domain/path availability
-sudo yunohost app checkurl "${domain}${path}" -a "$app" || ynh_die "Path not available: ${domain}${path}"
+path=$(ynh_normalize_url_path $path)
+ynh_webpath_available $domain $path
+ynh_webpath_register $app $domain $path
 
 # Copy files to the right place
 version=$(cat upstream_version)

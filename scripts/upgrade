@@ -13,8 +13,7 @@ domain=$(ynh_app_setting_get "$app" domain)
 path=$(ynh_app_setting_get "$app" path)
 admin=$(ynh_app_setting_get "$app" admin)
 
-# Remove trailing "/" for next commands
-path=${path%/}
+path=$(ynh_normalize_url_path $path)
 
 # Copy files to the right place
 version=$(cat upstream_version)

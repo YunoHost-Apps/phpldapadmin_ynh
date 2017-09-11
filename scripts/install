@@ -10,6 +10,7 @@ admin=$YNH_APP_ARG_ADMIN
 
 # Source YunoHost helpers
 . /usr/share/yunohost/helpers
+ynh_abort_if_errors
 
 # Save app settings
 ynh_app_setting_set "$app" admin "$admin"

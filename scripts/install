@@ -26,7 +26,7 @@ final_path=/var/www/$app
 sudo rm -rf $final_path
 sudo mkdir -p $final_path
 echo "Downloading phpLDAPadmin $version..."
-sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php5/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
+sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php%35/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
 echo "Extracting to $final_path..."
 sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
 sudo cp  -ar ../phpldapadmin-$version/. $final_path

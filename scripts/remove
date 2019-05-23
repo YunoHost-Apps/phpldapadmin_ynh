@@ -12,7 +12,7 @@ app=$YNH_APP_INSTANCE_NAME
 domain=$(ynh_app_setting_get "$app" domain)
 
 # Remove conf and app
-sudo rm -rf /var/www/phpldapadmin
-sudo rm -f /etc/nginx/conf.d/$domain.d/$app.conf
+sudo ynh_secure_remove --file=/var/www/phpldapadmin
+sudo ynh_secure_remove --file=/etc/nginx/conf.d/$domain.d/$app.conf
 
 sudo service nginx reload

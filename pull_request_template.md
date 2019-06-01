@@ -15,7 +15,7 @@
 ---
 - [ ] **Code review**
 - [ ] **Approval (LGTM)**  
-*Code review and approval have to be from a member of @YunoHost/apps group*
+
 - **CI succeeded** : 
 [![Build Status](https://ci-apps-dev.yunohost.org/jenkins/job/phpldapadmin_ynh%20-BRANCH-/badge/icon)](https://ci-apps-dev.yunohost.org/jenkins/job/phpldapadmin_ynh%20-BRANCH-/)  
 *Please replace '-BRANCH-' in this link by the name of the branch used.*  

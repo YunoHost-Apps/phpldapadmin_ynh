@@ -1,59 +1,142 @@
 #!/bin/bash
 
-set -eu
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
 
-# See comments in install script
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# LOAD SETTINGS
+#=================================================
+ynh_script_progression --message="Loading installation settings..." --weight=2
+
 app=$YNH_APP_INSTANCE_NAME
 
-# Source YunoHost helpers
-. /usr/share/yunohost/helpers
+domain=$(ynh_app_setting_get --app=$app --key=domain)
+path_url=$(ynh_app_setting_get --app=$app --key=path)
+admin=$(ynh_app_setting_get --app=$app --key=admin)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+
+#=================================================
+# CHECK VERSION
+#=================================================
+
+upgrade_type=$(ynh_check_app_version_changed)
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+# If final_path doesn't exist, create it
+if [ -z "$final_path" ]; then
+	final_path=/var/www/$app
+	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+fi
+
+#=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=6
+
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	# restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
 ynh_abort_if_errors
 
-# Retrieve app settings
-domain=$(ynh_app_setting_get "$app" domain)
-path=$(ynh_app_setting_get "$app" path)
-admin=$(ynh_app_setting_get "$app" admin)
+#=================================================
+# CHECK THE PATH
+#=================================================
 
-path=$(ynh_normalize_url_path $path)
+path_url=$(ynh_normalize_url_path --path_url=$path_url)
 
-# Copy files to the right place
-version=$(cat upstream_version)
-final_path=/var/www/$app
-sudo rm -rf $final_path
-sudo mkdir -p $final_path
-echo "Downloading phpLDAPadmin $version..."
-sudo wget -O ../phpLDAPadmin.tar.gz http://sourceforge.net/projects/phpldapadmin/files/phpldapadmin-php%35/$version/phpldapadmin-$version.tgz/download > /dev/null 2>&1
-echo "Extracting to $final_path..."
-sudo tar xvzf ../phpLDAPadmin.tar.gz -C ..  > /dev/null 2>&1
-sudo cp  -ra ../phpldapadmin-$version/. $final_path
+#=================================================
+# STANDARD UPGRADE STEPS
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
 
-# Patch 1.2.3 for Jessie (correct bug php 5.5)
-#sudo wget -O PhpLdapAdmin-1.2.3_patch.tar.gz http://www.jouvinio.net/wiki/images/f/f0/PhpLdapAdmin-1.2.3_patch.tar.gz > /dev/null 2>&1
-sudo tar -C $final_path/lib/ -xzvf ../sources/PhpLdapAdmin-1.2.3_patch.tar.gz
+if [ "$upgrade_type" == "UPGRADE_APP" ]
+then
+	ynh_script_progression --message="Upgrading source files..." --weight=2
 
-# Configuration
-echo "Configuring application..."
-sudo cp ../conf/config.php $final_path/config/
+	# Download, check integrity, uncompress and patch the source from app.src
+	ynh_setup_source --dest_dir="$final_path"
+fi
 
-sudo yunohost app addaccess $app -u $admin
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Upgrading nginx web server configuration..." --weight=2
 
-# Files owned by root, www-data can just read
-echo "Setting permission..."
-sudo chown -R root: $final_path
-sudo find $final_path -type f | xargs sudo chmod 644
-sudo find $final_path -type d | xargs sudo chmod 755
-# config.php contains sensitive data, restrict its access
-sudo chown root:www-data $final_path/config/config.php
-sudo chmod 640 $final_path/config/config.php
+# Create a dedicated nginx config
+ynh_add_nginx_config
 
-# Modify Nginx configuration file and copy it to Nginx conf directory
-echo "Setting up nginx configuration..."
-sed -i "s@YNH_WWW_PATH@$path@g" ../conf/nginx.conf
-sed -i "s@YNH_WWW_ALIAS@$final_path/@g" ../conf/nginx.conf
-nginxconf=/etc/nginx/conf.d/$domain.d/$app.conf
-sudo cp ../conf/nginx.conf $nginxconf
-sudo chown root: $nginxconf
-sudo chmod 600 $nginxconf
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
-sudo service nginx reload
-#sudo yunohost app ssowatconf
+# Create a dedicated user (if not existing)
+ynh_system_user_create --username=$app
+
+#=================================================
+# PHP-FPM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Upgrading php-fpm configuration..." --weight=5
+
+# Create a dedicated php-fpm config
+ynh_add_fpm_config
+
+#=================================================
+# SPECIFIC UPGRADE
+#=================================================
+# GRANT ACCESS RIGHT TO ADMIN 
+#=================================================
+
+yunohost app addaccess $app -u $admin
+
+#=================================================
+# MODIFY A CONFIG FILE
+#=================================================
+
+ynh_backup_if_checksum_is_different --file="$final_path/config/config.php"
+cp -f "../conf/config.php.example" "$final_path/config/config.php"
+chmod 644 $final_path/config/config.php 
+
+#=================================================
+# STORE THE CONFIG FILE CHECKSUM
+#=================================================
+
+# Recalculate and store the checksum of the file for the next upgrade.
+ynh_store_file_checksum --file="$final_path/config/config.php"
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+# SECURE FILES AND DIRECTORIES
+#=================================================
+
+# Set permissions on app files
+chown -R root: $final_path
+
+#=================================================
+# RELOAD NGINX
+#=================================================
+ynh_script_progression --message="Reloading nginx web server..." --weight=1
+
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Upgrade of $app completed" --last

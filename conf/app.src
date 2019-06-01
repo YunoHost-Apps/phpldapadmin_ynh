@@ -1,0 +1,6 @@
+SOURCE_URL=https://github.com/leenooks/phpLDAPadmin/archive/1.2.4.tar.gz
+SOURCE_SUM=890f1b68d9197eb8edd5366a8ac6e3bf34c2d5780e80e67b89fe3017adeb8f49
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_FILENAME=

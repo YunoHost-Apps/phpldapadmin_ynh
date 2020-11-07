@@ -1,6 +1,6 @@
 # phpLDAPadmin for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin)  
+[![Integration level](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)  
 [![Install phpLDAPadmin with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=phpldapadmin)
 
 > *This package allow you to install phpLDAPadmin quickly and simply on a YunoHost server.  
@@ -27,9 +27,8 @@ phpLDAPadmin is a web app for administering Lightweight Directory Access Protoco
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/phpldapadmin%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/phpldapadmin%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/phpldapadmin%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/phpldapadmin/)
-* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/phpldapadmin%20%28Apps%29.svg)](https://ci-stretch.nohost.me/ci/apps/phpldapadmin/)
 
 ## Links
 
@@ -40,10 +39,8 @@ phpLDAPadmin is a web app for administering Lightweight Directory Access Protoco
 
 ---
 
-Developers info
-----------------
+## Developers info
 
-**Only if you want to use a testing branch for coding, instead of merging directly into master.**
 Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.

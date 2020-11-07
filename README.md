@@ -9,7 +9,7 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 ## Overview
 phpLDAPadmin is a web app for administering Lightweight Directory Access Protocol (LDAP) servers.
 
-**Shipped version:** 1.2.4
+**Shipped version:** 1.2.6.2
 
 ## Screenshots
 

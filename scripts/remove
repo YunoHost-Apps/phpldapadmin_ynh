@@ -45,8 +45,6 @@ ynh_script_progression --message="Removing php-fpm configuration..." --weight=1
 # Remove the dedicated php-fpm config
 ynh_remove_fpm_config
 
-
-
 #=================================================
 # GENERIC FINALIZATION
 #=================================================

@@ -102,7 +102,7 @@ ynh_add_fpm_config
 # GRANT ACCESS RIGHT TO ADMIN 
 #=================================================
 
-yunohost app addaccess $app -u $admin
+ynh_permission_update --permission "main" --add $admin --remove "all_users"
 
 #=================================================
 # MODIFY A CONFIG FILE

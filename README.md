@@ -1,7 +1,7 @@
 # phpLDAPadmin for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)  
-[![Install phpLDAPadmin with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=phpldapadmin)
+[![Install phpLDAPadmin with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 
 > *This package allow you to install phpLDAPadmin quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*

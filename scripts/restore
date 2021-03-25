@@ -82,7 +82,7 @@ ynh_restore_file --origin_path="/etc/php/$phpversion/fpm/pool.d/$app.conf"
 # GRANT ACCESS RIGHT TO ADMIN 
 #=================================================
 
-yunohost app addaccess $app -u $admin
+ynh_permission_update --permission "main" --add $admin --remove "all_users"
 
 #=================================================
 # GENERIC FINALIZATION

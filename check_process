@@ -17,11 +17,7 @@
 		upgrade=1	from_commit=785706fb2607e95fbc4876e1367a715a6b8543d2
 		backup_restore=1
 		multi_instance=1
-		incorrect_path=1
 		change_url=0
-;;; Levels
-	# If the level 5 (Package linter) is forced to 1. Please add justifications here.
-	Level 5=auto
 ;;; Options
 Email=aymhce@gmail.com
 Notification=none

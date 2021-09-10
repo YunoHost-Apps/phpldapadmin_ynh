@@ -1,11 +1,8 @@
-# See here for more informations
-# https://github.com/YunoHost/package_check#syntax-check_process-file
-
 ;; Test complet
 	; Manifest
-		domain="domain.tld"	(DOMAIN)
-		path="/phpldapadmin"	(PATH)
-		admin="john"	(USER)
+		domain="domain.tld"
+		path="/phpldapadmin"
+		admin="john"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=1

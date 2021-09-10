@@ -6,7 +6,7 @@
         "en": "Manage OpenLDAP database over the web",
         "fr": "Application web de gestion de la base OpenLDAP"
     },
-    "version": "1.2.6.2~ynh1",
+    "version": "1.2.6.2~ynh2",
     "url": "http://phpldapadmin.sourceforge.net",
     "license": "GPL-2.0-or-later",
     "maintainer": {
@@ -14,7 +14,7 @@
         "email": "aymhce@gmail.com"
     },
     "requirements": {
-        "yunohost": ">= 4.1.7"
+        "yunohost": ">= 4.2.4"
     },
     "multi_instance": true,
     "services": [

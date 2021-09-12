@@ -44,6 +44,14 @@ ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
 
 #=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Configuring system user..." --weight=5
+
+# Create a system user
+ynh_system_user_create --username=$app --home_dir="$final_path"
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=3
@@ -52,6 +60,10 @@ ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$final_path"
 
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
@@ -59,14 +71,6 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=5
-
-# Create a system user
-ynh_system_user_create --username=$app
 
 #=================================================
 # PHP-FPM CONFIGURATION
@@ -78,34 +82,19 @@ ynh_add_fpm_config
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
-# SPECIFIC SETUP
+# MODIFY A CONFIG FILE
+#=================================================
+ynh_script_progression --message="Adding a configuration file..." --weight=1
+
+ynh_add_config --template="../conf/config.php.example" --destination="$final_path/config/config.php"
+chmod 644 $final_path/config/config.php 
+
 #=================================================
 # GRANT ACCESS RIGHT TO ADMIN 
 #=================================================
+ynh_script_progression --message="Configuring permissions..." --weight=1
 
-ynh_permission_update --permission "main" --add $admin --remove "all_users"
-
-#=================================================
-# MODIFY A CONFIG FILE
-#=================================================
-
-cp "../conf/config.php.example" "$final_path/config/config.php"
-
-#=================================================
-# STORE THE CONFIG FILE CHECKSUM
-#=================================================
-
-# Calculate and store the config file checksum into the app settings
-ynh_store_file_checksum --file="$final_path/config/config.php"
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-
-# Set permissions to app files
-chown -R root: $final_path
+ynh_permission_update --permission="main" --add="$admin" --remove="all_users"
 
 #=================================================
 # RELOAD NGINX

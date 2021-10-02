@@ -1,0 +1,1 @@
+phpLDAPadmin is a web app for administering Lightweight Directory Access Protocol (LDAP) servers.

@@ -6,8 +6,15 @@
         "en": "Manage OpenLDAP database over the web",
         "fr": "Application web de gestion de la base OpenLDAP"
     },
-    "version": "1.2.6.2~ynh2",
-    "url": "http://phpldapadmin.sourceforge.net",
+    "version": "1.2.6.2~ynh3",
+    "url": "http://www.phpldapadmin.org",
+    "upstream": {
+        "license": "GPL-2.0-or-later",
+        "website": "http://www.phpldapadmin.org",
+        "demo": "https://olddemo.phpldapadmin.org/",
+        "admindoc": "http://www.phpldapadmin.org",
+        "code": "https://github.com/leenooks/phpLDAPadmin"
+    },
     "license": "GPL-2.0-or-later",
     "maintainer": {
         "name": "aymhce",
@@ -25,8 +32,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "domain.org"
+                "type": "domain"
             },
             {
                 "name": "path",
@@ -36,8 +42,7 @@
             },
             {
                 "name": "admin",
-                "type": "user",
-                "example": "johndoe"
+                "type": "user"
             }
         ]
     }

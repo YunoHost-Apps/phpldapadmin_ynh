@@ -6,7 +6,7 @@
         "en": "Manage OpenLDAP database over the web",
         "fr": "Application web de gestion de la base OpenLDAP"
     },
-    "version": "1.2.6.2~ynh2",
+    "version": "1.2.6.2~ynh3",
     "url": "http://www.phpldapadmin.org",
     "upstream": {
         "license": "GPL-2.0-or-later",

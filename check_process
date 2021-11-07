@@ -11,10 +11,14 @@
 		setup_private=1
 		setup_public=0
 		upgrade=1
-		upgrade=1	from_commit=785706fb2607e95fbc4876e1367a715a6b8543d2
+		upgrade=1	from_commit=7b4da4dfd5f8a13f20962c90ce59b829c3968028
 		backup_restore=1
 		multi_instance=1
 		change_url=0
 ;;; Options
-Email=aymhce@gmail.com
+Email=
 Notification=none
+;;; Upgrade options
+	; commit=7b4da4dfd5f8a13f20962c90ce59b829c3968028
+		name=Testing (#14)
+		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&language=fr&is_public=1&password=pass&port=666&

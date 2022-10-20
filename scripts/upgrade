@@ -91,14 +91,6 @@ chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
 #=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=2
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=5
@@ -107,8 +99,17 @@ ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=5
 ynh_add_fpm_config
 
 #=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=2
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+#=================================================
 # MODIFY A CONFIG FILE
 #=================================================
+ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 ynh_add_config --template="../conf/config.php.example" --destination="$final_path/config/config.php"
 chmod 644 $final_path/config/config.php 

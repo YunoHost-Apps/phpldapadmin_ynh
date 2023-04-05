@@ -1,0 +1,54 @@
+packaging_format = 2
+
+id = "phpldapadmin"
+name = "phpLDAPadmin"
+description.en = "Manage OpenLDAP database over the web"
+description.fr = "Application web de gestion de la base OpenLDAP"
+
+version = "1.2.6.6~ynh1"
+
+maintainers = ["aymhce"]
+
+[upstream]
+license = "GPL-2.0-or-later"
+website = "http://www.phpldapadmin.org"
+demo = "https://olddemo.phpldapadmin.org/"
+admindoc = "http://www.phpldapadmin.org"
+code = "https://github.com/leenooks/phpLDAPadmin"
+
+[integration]
+yunohost = ">= 11.1.16"
+architectures = "all"
+multi_instance = true
+ldap = true
+sso =  false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/phpldapadmin"
+
+    [install.admin]
+    type = "user"
+
+[resources]
+        [resources.sources.main]
+        url = "https://github.com/leenooks/phpLDAPadmin/archive/1.2.6.6.tar.gz"
+        sha256 = "7a8c02a611e60aa6713d1cf863dfac9637e23c3f4d401ea5e47dbe2b22d4895a"
+        autoupdate.strategy = "latest_github_tag"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages ='php7.4-fpm'

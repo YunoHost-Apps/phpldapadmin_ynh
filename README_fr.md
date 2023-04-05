@@ -5,31 +5,32 @@ It shall NOT be edited by hand.
 
 # phpLDAPadmin pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)
+
 [![Installer phpLDAPadmin avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer phpLDAPadmin rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer phpLDAPadmin rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 phpLDAPadmin is a web app for administering Lightweight Directory Access Protocol (LDAP) servers.
 
-**Version incluse :** 1.2.6.4~ynh1
+**Version incluse :** 1.2.6.6~ynh1
 
 **Démo :** https://olddemo.phpldapadmin.org/
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de phpLDAPadmin](./doc/screenshots/screenshot.png)
+![Capture d’écran de phpLDAPadmin](./doc/screenshots/screenshot.png)
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <http://www.phpldapadmin.org>
-* Documentation officielle de l'admin : <http://www.phpldapadmin.org>
-* Dépôt de code officiel de l'app : <https://github.com/leenooks/phpLDAPadmin>
+* Site officiel de l’app : <http://www.phpldapadmin.org>
+* Documentation officielle de l’admin : <http://www.phpldapadmin.org>
+* Dépôt de code officiel de l’app : <https://github.com/leenooks/phpLDAPadmin>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_phpldapadmin>
 * Signaler un bug : <https://github.com/YunoHost-Apps/phpldapadmin_ynh/issues>
 
@@ -45,4 +46,4 @@ ou
 sudo yunohost app upgrade phpldapadmin -u https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>

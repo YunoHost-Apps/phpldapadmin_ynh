@@ -17,7 +17,7 @@ admindoc = "http://www.phpldapadmin.org"
 code = "https://github.com/leenooks/phpLDAPadmin"
 
 [integration]
-yunohost = ">= 11.1.16"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap = true
@@ -33,6 +33,10 @@ ram.runtime = "50M"
     [install.path]
     type = "path"
     default = "/phpldapadmin"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
 
     [install.admin]
     type = "user"
@@ -51,4 +55,4 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages ='php7.4-fpm'
+    packages ='php8.2-fpm'

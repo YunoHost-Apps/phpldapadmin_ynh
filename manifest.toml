@@ -36,7 +36,7 @@ ram.runtime = "50M"
 
     [install.init_main_permission]
     type = "group"
-    default = "visitors"
+    default = "admins"
 
     [install.admin]
     type = "user"
@@ -53,6 +53,7 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+    main.allowed = "admins"
 
     [resources.apt]
     packages ='php8.1-fpm, php8.1-ldap, php8.1-xml'

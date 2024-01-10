@@ -36,7 +36,7 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="../conf/config.php.example" --destination="$install_dir/config/config.php"
+ynh_add_config --template="config.php.example" --destination="$install_dir/config/config.php"
 
 chmod 644 "$install_dir/config/config.php"
 chown $app:$app "$install_dir/config/config.php"

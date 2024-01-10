@@ -31,6 +31,7 @@ phpLDAPadmin is a web app for administering Lightweight Directory Access Protoco
 * Official app website: <http://www.phpldapadmin.org>
 * Official admin documentation: <http://www.phpldapadmin.org>
 * Upstream app code repository: <https://github.com/leenooks/phpLDAPadmin>
+* YunoHost Store: <https://apps.yunohost.org/app/phpldapadmin>
 * Report a bug: <https://github.com/YunoHost-Apps/phpldapadmin_ynh/issues>
 
 ## Developer info

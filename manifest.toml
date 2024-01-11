@@ -5,7 +5,7 @@ name = "phpLDAPadmin"
 description.en = "Manage OpenLDAP database over the web"
 description.fr = "Application web de gestion de la base OpenLDAP"
 
-version = "1.2.6.6~ynh4"
+version = "1.2.6.7~ynh1"
 
 maintainers = ["aymhce"]
 
@@ -20,8 +20,11 @@ code = "https://github.com/leenooks/phpLDAPadmin"
 yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
+
 ldap = true
+
 sso =  false
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -43,8 +46,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/leenooks/phpLDAPadmin/archive/1.2.6.6.tar.gz"
-        sha256 = "7a8c02a611e60aa6713d1cf863dfac9637e23c3f4d401ea5e47dbe2b22d4895a"
+        url = "https://github.com/leenooks/phpLDAPadmin/archive/1.2.6.7.tar.gz"
+        sha256 = "dde104aca695e18b0615859ae96177cdcb8a3294aee8d1d47a0b828af939679d"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
@@ -56,4 +59,4 @@ ram.runtime = "50M"
     main.allowed = "admins"
 
     [resources.apt]
-    packages ='php8.1-fpm, php8.1-ldap, php8.1-xml'
+    packages ='php8.2-ldap, php8.2-xml'

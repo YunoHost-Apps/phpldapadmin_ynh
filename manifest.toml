@@ -59,4 +59,4 @@ ram.runtime = "50M"
     main.allowed = "admins"
 
     [resources.apt]
-    packages ='php7.4-ldap, php7.4-xml'
+    packages ='php8.2-ldap, php8.2-xml'

@@ -5,7 +5,9 @@
 
 # YunoHost 上的 phpLDAPadmin
 
-[![集成程度](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![工作状态](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
+![工作状态](https://apps.yunohost.org/badge/state/phpldapadmin)
+![维护状态](https://apps.yunohost.org/badge/maintained/phpldapadmin)
 
 [![使用 YunoHost 安装 phpLDAPadmin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 

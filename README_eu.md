@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # phpLDAPadmin YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/phpldapadmin)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/phpldapadmin)
 
 [![Instalatu phpLDAPadmin YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 

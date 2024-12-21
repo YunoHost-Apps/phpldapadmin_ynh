@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # phpLDAPadmin para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/phpldapadmin)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/phpldapadmin)
 
 [![Instalar phpLDAPadmin con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 

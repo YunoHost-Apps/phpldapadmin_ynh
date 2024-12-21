@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # phpLDAPadmin para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/phpldapadmin.svg)](https://dash.yunohost.org/appci/app/phpldapadmin) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/phpldapadmin.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
+![Estado funcional](https://apps.yunohost.org/badge/state/phpldapadmin)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/phpldapadmin)
 
 [![Instalar phpLDAPadmin con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpldapadmin)
 
@@ -36,7 +38,7 @@ phpLDAPadmin is a web app for administering Lightweight Directory Access Protoco
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

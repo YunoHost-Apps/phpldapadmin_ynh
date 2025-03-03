@@ -1,30 +1,57 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir"
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env /database/database.sqlite"
 
 #=================================================
-# PHP-FPM CONFIGURATION
+# UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression "Upgrading PHP-FPM configuration..."
+ynh_script_progression "Updating $app's configuration files..."
+
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_phpfpm
 
 ynh_config_add_nginx
 
 #=================================================
-# MODIFY A CONFIG FILE
+# BUILD APP
 #=================================================
-ynh_script_progression "Adding $app's configuration..."
+ynh_script_progression "Building app..."
 
-ynh_config_add --template="config.php.example" --destination="$install_dir/config/config.php"
+ynh_nodejs_install
+ynh_composer_install
+ynh_composer_exec install --optimize-autoloader --no-dev
+
+pushd "$install_dir"
+	ynh_exec_as_app npm install
+	ynh_exec_as_app npm run prod
+	ynh_exec_as_app php$php_version artisan key:generate --no-interaction --force
+	ynh_exec_as_app php$php_version artisan optimize
+	ynh_exec_as_app php$php_version artisan migrate --no-interaction --force
+popd
 
 #=================================================
 # END OF SCRIPT

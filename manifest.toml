@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "phpldapadmin"
@@ -23,7 +25,8 @@ architectures = "all"
 multi_instance = true
 
 ldap = true
-sso =  false
+
+sso = false
 
 disk = "50M"
 ram.build = "50M"
@@ -45,10 +48,10 @@ ram.runtime = "50M"
     type = "user"
 
 [resources]
-        [resources.sources.main]
-        url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.0.tar.gz"
-        sha256 = "9efe3e74c90c766a61c99e9e01923228b7c5dbc7761b1c2f5a92ef145c19eadd"
-        autoupdate.strategy = "latest_github_tag"
+    [resources.sources.main]
+    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.0.tar.gz"
+    sha256 = "9efe3e74c90c766a61c99e9e01923228b7c5dbc7761b1c2f5a92ef145c19eadd"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
@@ -60,4 +63,4 @@ ram.runtime = "50M"
     main.allowed = "admins"
 
     [resources.apt]
-    packages ='php7.4-ldap, php7.4-xml'
+    packages ='php8.4-ldap, php8.4-xml, php8.4-igbinary, php8.4-msgpack, php8.4-memcached, php8.4-sqlite3'

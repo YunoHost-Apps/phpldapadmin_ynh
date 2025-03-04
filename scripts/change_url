@@ -16,6 +16,12 @@ ynh_script_progression "Updating NGINX web server configuration..."
 ynh_config_change_url_nginx
 
 #=================================================
+# SPECIFIC MODIFICATIONS
+#=================================================
+
+ynh_replace --match="https://$old_domain$old_path" --replace="https://$new_domain$new_path" --file="$install_dir/.env"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 

@@ -16,9 +16,23 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
+# INSTALL APP
+#=================================================
+ynh_script_progression "Installing app..."
+
+ynh_nodejs_install
+ynh_composer_install
+ynh_composer_exec install --optimize-autoloader --no-dev
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
+
+pushd "$install_dir"
+	app_key=$(ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --show)
+	ynh_app_setting_set --key=app_key --value=$app_key
+popd
 
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
@@ -38,20 +52,12 @@ ynh_config_add_nginx
 #=================================================
 ynh_script_progression "Building app..."
 
-ynh_nodejs_install
-ynh_composer_install
-ynh_composer_exec install --optimize-autoloader --no-dev
-
 pushd "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app npm install
 	ynh_hide_warnings ynh_exec_as_app npm run prod
-	ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --force
 	ynh_hide_warnings ynh_exec_as_app php$php_version artisan optimize
 	ynh_hide_warnings ynh_exec_as_app php$php_version artisan migrate --no-interaction --force
 popd
-
-ynh_delete_file_checksum "$install_dir/.env"
-ynh_store_file_checksum "$install_dir/.env"
 
 #=================================================
 # END OF SCRIPT

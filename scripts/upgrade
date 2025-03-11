@@ -47,7 +47,9 @@ ynh_composer_exec install --optimize-autoloader --no-dev
 pushd "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app npm install
 	ynh_hide_warnings ynh_exec_as_app npm run prod
-	#ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --force
+	if ynh_app_upgrading_from_version_before 2.0.0~ynh1; then
+		ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --force
+	fi
 	ynh_hide_warnings ynh_exec_as_app php$php_version artisan optimize
 	ynh_hide_warnings ynh_exec_as_app php$php_version artisan migrate --no-interaction --force
 popd

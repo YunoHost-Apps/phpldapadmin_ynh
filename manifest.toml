@@ -5,7 +5,7 @@ name = "phpLDAPadmin"
 description.en = "Manage OpenLDAP database over the web"
 description.fr = "Application web de gestion de la base OpenLDAP"
 
-version = "1.2.6.7~ynh2"
+version = "1.2.6.7~ynh3"
 
 maintainers = ["aymhce"]
 

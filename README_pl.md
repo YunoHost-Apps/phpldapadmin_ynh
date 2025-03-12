@@ -20,7 +20,7 @@ Nie powinno być ono edytowane ręcznie.
 
 phpLDAPadmin is a web app for administering Lightweight Directory Access Protocol (LDAP) servers.
 
-**Dostarczona wersja:** 1.2.6.7~ynh2
+**Dostarczona wersja:** 1.2.6.7~ynh3
 
 **Demo:** <https://olddemo.phpldapadmin.org/>
 

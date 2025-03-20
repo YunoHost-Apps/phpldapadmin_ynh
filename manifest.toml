@@ -36,9 +36,9 @@ ram.runtime = "50M"
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/phpldapadmin"
+    #[install.path]
+    #type = "path"
+    #default = "/phpldapadmin"
 
     [install.init_main_permission]
     type = "group"

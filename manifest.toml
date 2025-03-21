@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "phpldapadmin"
@@ -23,7 +25,8 @@ architectures = "all"
 multi_instance = true
 
 ldap = true
-sso =  false
+
+sso = false
 
 disk = "50M"
 ram.build = "50M"
@@ -33,9 +36,9 @@ ram.runtime = "50M"
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/phpldapadmin"
+    #[install.path]
+    #type = "path"
+    #default = "/phpldapadmin"
 
     [install.init_main_permission]
     type = "group"
@@ -45,10 +48,10 @@ ram.runtime = "50M"
     type = "user"
 
 [resources]
-        [resources.sources.main]
-        url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.2.tar.gz"
-        sha256 = "b9ad3b5c94b1ec68729ca24c321d112c030e32da63df65796dfd8edf136d6a17"
-        autoupdate.strategy = "latest_github_tag"
+    [resources.sources.main]
+    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.2.tar.gz"
+    sha256 = "b9ad3b5c94b1ec68729ca24c321d112c030e32da63df65796dfd8edf136d6a17"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
@@ -60,4 +63,4 @@ ram.runtime = "50M"
     main.allowed = "admins"
 
     [resources.apt]
-    packages ='php7.4-ldap, php7.4-xml'
+    packages ='php8.4-ldap, php8.4-xml, php8.4-igbinary, php8.4-msgpack, php8.4-memcached, php8.4-sqlite3'

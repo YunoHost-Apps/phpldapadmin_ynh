@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# phpLDAPadmin para Yunohost
+# phpLDAPadmin para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/phpldapadmin)

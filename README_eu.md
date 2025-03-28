@@ -40,7 +40,7 @@ phpLDAPadmin is a web app for administering Lightweight Directory Access Protoco
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/phpldapadmin_ynh/tree/testing --debug

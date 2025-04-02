@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# phpLDAPadmin para Yunohost
+# phpLDAPadmin para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/phpldapadmin)](https://ci-apps.yunohost.org/ci/apps/phpldapadmin/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/phpldapadmin)
@@ -20,7 +20,7 @@ No se debe editar a mano.
 
 phpLDAPadmin is a web app for administering Lightweight Directory Access Protocol (LDAP) servers.
 
-**Versión actual:** 1.2.6.7~ynh3
+**Versión actual:** 2.0.2~ynh1
 
 **Demo:** <https://olddemo.phpldapadmin.org/>
 

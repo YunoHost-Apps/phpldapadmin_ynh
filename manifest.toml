@@ -52,6 +52,7 @@ ram.runtime = "50M"
     url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.2.tar.gz"
     sha256 = "b9ad3b5c94b1ec68729ca24c321d112c030e32da63df65796dfd8edf136d6a17"
     autoupdate.strategy = "latest_github_tag"
+    autoupdate.version_regex = "^RELEASE-(.*)$"
 
     [resources.system_user]
 

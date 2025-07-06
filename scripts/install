@@ -7,7 +7,7 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-key=$(ynh_string_random --length=24)
+key=$(ynh_string_random --length=32)
 
 #=================================================
 # INSTALL DEPENDENCIES

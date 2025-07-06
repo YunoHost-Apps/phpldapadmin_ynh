@@ -8,21 +8,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression "Ensuring downward compatibility..."
-
-# Before version 2.x phpldapadmin could be installed under a path,
-# this functionnality has been deprecated since version 2.0.0 and phpldapadmin
-# now need to be installed under its own domain.
-# If the app is currently installed under a path, we warn the admin
-# that he should move the app under its own domain
-if [ "$path" != "/" ]; then
-  ynh_die --message="Since version 2.0.0, $app need to be installed under its own domain. \
-  Before upgrading, change $app URL: delete the path and switch to a new domain if needed."
-fi
-
-#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression "Installing dependencies..."
@@ -44,20 +29,6 @@ ynh_script_progression "Installing app..."
 
 ynh_composer_install
 ynh_composer_exec install --optimize-autoloader --no-dev
-
-#=================================================
-# APP INITIAL CONFIGURATION
-#=================================================
-#ynh_script_progression "Adding $app's configuration files..."
-
-#if ynh_app_upgrading_from_version_before 2.0.0~ynh1; then
-#	pushd "$install_dir"
-#		app_key=$(ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --show)
-#		ynh_app_setting_set --key=app_key --value=$app_key
-#	popd
-#fi
-
-#ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS

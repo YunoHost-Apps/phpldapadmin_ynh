@@ -30,17 +30,9 @@ ynh_script_progression "Adding $app's configuration files..."
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
-# INSTALL APP
-#=================================================
-ynh_script_progression "Installing app..."
-
-ynh_composer_install
-ynh_composer_exec install --optimize-autoloader --no-dev
-
-#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Adding $app's configuration files..."
+#ynh_script_progression "Adding $app's configuration files..."
 
 #pushd $install_dir
 #	ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --show
@@ -56,6 +48,14 @@ ynh_config_add_phpfpm
 
 # Create a dedicated NGINX config using the conf/nginx.conf template
 ynh_config_add_nginx
+
+#=================================================
+# INSTALL APP
+#=================================================
+ynh_script_progression "Installing app..."
+
+ynh_composer_install
+ynh_composer_exec install --optimize-autoloader --no-dev
 
 #=================================================
 # BUILD APP

@@ -23,6 +23,13 @@ if [ "$path" != "/" ]; then
 fi
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
@@ -35,23 +42,22 @@ ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env /database
 #=================================================
 ynh_script_progression "Installing app..."
 
-ynh_nodejs_install
 ynh_composer_install
 ynh_composer_exec install --optimize-autoloader --no-dev
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Adding $app's configuration files..."
+#ynh_script_progression "Adding $app's configuration files..."
 
-if ynh_app_upgrading_from_version_before 2.0.0~ynh1; then
-	pushd "$install_dir"
-		app_key=$(ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --show)
-		ynh_app_setting_set --key=app_key --value=$app_key
-	popd
-fi
+#if ynh_app_upgrading_from_version_before 2.0.0~ynh1; then
+#	pushd "$install_dir"
+#		app_key=$(ynh_hide_warnings ynh_exec_as_app php$php_version artisan key:generate --no-interaction --show)
+#		ynh_app_setting_set --key=app_key --value=$app_key
+#	popd
+#fi
 
-ynh_config_add --template=".env" --destination="$install_dir/.env"
+#ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS

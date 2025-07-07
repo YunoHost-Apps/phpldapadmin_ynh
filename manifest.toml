@@ -7,7 +7,7 @@ name = "phpLDAPadmin"
 description.en = "Manage OpenLDAP database over the web"
 description.fr = "Application web de gestion de la base OpenLDAP"
 
-version = "2.0.2~ynh1"
+version = "2.2.1~ynh1"
 
 maintainers = ["aymhce"]
 
@@ -36,22 +36,12 @@ ram.runtime = "50M"
     [install.domain]
     type = "domain"
 
-    #[install.path]
-    #type = "path"
-    #default = "/phpldapadmin"
-
-    [install.init_main_permission]
-    type = "group"
-    default = "admins"
-
-    [install.admin]
-    type = "user"
-
 [resources]
     [resources.sources.main]
-    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.0.2.tar.gz"
-    sha256 = "b9ad3b5c94b1ec68729ca24c321d112c030e32da63df65796dfd8edf136d6a17"
+    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.2.1.tar.gz"
+    sha256 = "0dc2780abdbcd6d5af20e1ef05c2cec6b89ddce9ba9e84f0da0c282007f8acc9"
     autoupdate.strategy = "latest_github_tag"
+    autoupdate.version_regex = "^RELEASE-(.*)$"
 
     [resources.system_user]
 

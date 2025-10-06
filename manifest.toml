@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "phpldapadmin"
 name = "phpLDAPadmin"
-description.en = "Manage OpenLDAP database over the web"
-description.fr = "Application web de gestion de la base OpenLDAP"
+description.en = "Manage LDAP databases using a web interface"
+description.fr = "Gérez des base LDAP depuis une interface web"
 
 version = "2.2.1~ynh1"
 

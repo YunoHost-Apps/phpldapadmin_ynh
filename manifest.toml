@@ -19,13 +19,12 @@ admindoc = "http://www.phpldapadmin.org"
 code = "https://github.com/leenooks/phpLDAPadmin"
 
 [integration]
-yunohost = ">= 12.0.9"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = true
-
 sso = false
 
 disk = "50M"
@@ -53,4 +52,10 @@ ram.runtime = "50M"
     main.allowed = "admins"
 
     [resources.apt]
-    packages ='php8.4-ldap, php8.4-xml, php8.4-igbinary, php8.4-msgpack, php8.4-memcached, php8.4-sqlite3'
+    packages ="php8.4-ldap, php8.4-xml, php8.4-igbinary, php8.4-msgpack, php8.4-memcached, php8.4-sqlite3"
+
+    [resources.nodejs]
+    version = "22"
+
+    [resources.composer]
+    version = "2.8.12"

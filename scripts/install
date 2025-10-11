@@ -4,7 +4,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -12,13 +11,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 key=$(ynh_string_random --length=32)
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -69,7 +61,6 @@ popd
 #=================================================
 ynh_script_progression "Installing app..."
 
-ynh_composer_install
 ynh_composer_exec install --optimize-autoloader --no-dev
 
 #=================================================

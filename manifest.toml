@@ -58,4 +58,4 @@ ram.runtime = "50M"
     version = "22"
 
     [resources.composer]
-    version = "2.8.12"
+    version = "2.9.5"

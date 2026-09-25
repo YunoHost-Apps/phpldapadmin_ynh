@@ -7,7 +7,7 @@ name = "phpLDAPadmin"
 description.en = "Manage LDAP databases using a web interface"
 description.fr = "Gérez des base LDAP depuis une interface web"
 
-version = "2.2.1~ynh1"
+version = "2.3.4~ynh1"
 
 maintainers = ["aymhce"]
 
@@ -37,8 +37,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.2.1.tar.gz"
-    sha256 = "0dc2780abdbcd6d5af20e1ef05c2cec6b89ddce9ba9e84f0da0c282007f8acc9"
+    url = "https://github.com/leenooks/phpLDAPadmin/archive/refs/tags/2.3.4.tar.gz"
+    sha256 = "89fa22b7a777ea2804dc5104137727eca8f1c0548b4b12c13032a089be93a1f5"
     autoupdate.strategy = "latest_github_tag"
     autoupdate.version_regex = "^RELEASE-(.*)$"
 

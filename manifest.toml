@@ -7,7 +7,7 @@ name = "phpLDAPadmin"
 description.en = "Manage LDAP databases using a web interface"
 description.fr = "Gérez des base LDAP depuis une interface web"
 
-version = "2.2.1~ynh1"
+version = "2.2.1~ynh2"
 
 maintainers = ["aymhce"]
 
